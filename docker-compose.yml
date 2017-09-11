@@ -1,0 +1,21 @@
+version: "3"
+services:
+  alpha:
+    build:
+      context: './app1'
+    environment:
+      - VERSION_DESCRIPTION='BLUE'
+      - NODE_ENV=production
+    ports:
+      - 4000:4000
+  beta:
+    build:
+      context: './app2'
+    environment:
+      - VERSION_DESCRIPTION='GREEN'
+      - NODE_ENV=development
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app2:/app
+    command: yarn dev
